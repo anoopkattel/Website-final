@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anup Kattel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p.subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Summary Section */
+        .summary {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        /* Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 7rem;
+            }
+
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AK</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Anup Kattel</span></h1>
+            <p class="subtitle">Aspiring ACCA student from Nepal. (7/13)</p>
+            <p>Accounting intern with knowledge of bookkeeping and accounting principles. Aspiring to build a successful career in the accounting field.</p>
+            <a href="#contact" class="cta-button" style="margin-top: 2rem;">Get In Touch</a>
+        </div>
+        <div class="hero-image">
+            <img src="anup.jpg" alt="Anup Kattel" class="profile-img">
+        </div>
+    </section>
+
+    <section id="summary">
+        <h2 class="section-title"></h2>
+        <div class="summary">
+                        <div style="margin-top: 1.5rem;">
+                <h3 style="margin-bottom: 1rem;">Key Skills:</h3>
+                <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Bookkeeping</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>MS Office</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Bank reconciliation</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Financial statements preparation</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Client relations</li>
+                    <li><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> IFRS/IAS</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <center>
+          <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Aug 2024 - Present</div>
+                    <h3 class="timeline-title">Accounting intern</h3>
+                    <p>Arun Securities Pvt. Ltd, Kathmandu</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.2rem;">
+                                 </ul>
+                </div>
+        </center>
+            
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <p style="margin-bottom: 2rem;">Feel free to reach out for collaborations or just to say hello!</p>
+            <a href="mailto:anupkattel0@gmail.com" class="cta-button">
+                <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> Email Me
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo" style="color: white; margin-bottom: 1rem;">Anup Kattel</div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/anup-kattel0/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/anoopkattel"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/anoop_kattel/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/anup.kattel.58"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2025 Anup Kattel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Responsive adjustments
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
